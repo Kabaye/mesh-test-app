@@ -1,5 +1,7 @@
 package com.test.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -10,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,14 +25,18 @@ public class User {
     @Column(name = "name")
     private String name;
     @Column(name = "date_of_birth")
+    @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
     @Column(name = "password")
     private String password;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    private Set<PhoneData> phones;
+    private List<PhoneData> phones;
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    private Set<EmailData> emails;
+    private List<EmailData> emails;
+    @JsonManagedReference
     @OneToOne(mappedBy = "user")
     private Account account;
 }

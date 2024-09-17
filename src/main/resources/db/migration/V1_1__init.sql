@@ -31,7 +31,6 @@ create table email_data
         constraint email_data_pk
             primary key,
     user_id bigint
-        unique
         constraint email_data_user_id_fk
             references user_table (id),
     email   varchar(200) unique
@@ -43,7 +42,6 @@ create table phone_data
         constraint phone_data_pk
             primary key,
     user_id bigint
-        unique
         constraint phone_data_user_id_fk
             references user_table (id),
     phone   varchar(13) unique

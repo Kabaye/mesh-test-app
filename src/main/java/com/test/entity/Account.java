@@ -1,5 +1,6 @@
 package com.test.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -18,6 +19,7 @@ public class Account {
     @Column(name = "id")
     private Long id;
     @OneToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
     @Column(name = "balance")
