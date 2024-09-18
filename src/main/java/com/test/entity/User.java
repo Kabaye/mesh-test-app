@@ -1,6 +1,7 @@
 package com.test.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -27,6 +28,7 @@ public class User {
     @Column(name = "date_of_birth")
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateOfBirth;
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 

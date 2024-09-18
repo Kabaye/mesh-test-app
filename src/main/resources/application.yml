@@ -15,3 +15,6 @@ spring:
 server:
   port: 8086
 
+jwt:
+  expiration-in-ms: 86400000
+  key: ${JWT_KEY:PT09PT09PT09PT09PT09PWtleV9leGFtcGxlX3N2X2t1bGljaF90ZXN0X2RhdGE9PT09PT09PT09PT09PT09PQ==}

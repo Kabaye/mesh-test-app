@@ -4,6 +4,7 @@ import com.test.entity.User;
 import com.test.model.SearchUserRequest;
 import com.test.model.UpdateUserRequest;
 import com.test.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/users")
+@SecurityRequirement(name = "Authorization")
 public class UserController {
     private final UserService userService;
 
