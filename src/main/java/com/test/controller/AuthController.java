@@ -3,8 +3,6 @@ package com.test.controller;
 import com.test.security.jwt.JwtUtils;
 import com.test.security.model.AuthenticationRequest;
 import com.test.security.model.AuthenticationResponse;
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

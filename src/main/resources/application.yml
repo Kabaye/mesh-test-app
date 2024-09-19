@@ -1,6 +1,6 @@
 spring:
   application:
-   name: TestApp
+    name: TestApp
   flyway:
     enabled: true
     validate-on-migrate: true

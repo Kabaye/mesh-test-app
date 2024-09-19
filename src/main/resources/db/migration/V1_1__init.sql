@@ -20,9 +20,7 @@ create table account
             references user_table (id),
     balance     decimal
         constraint check_balance_non_negative check ( balance >= 0.0 ),
-    max_balance decimal,
-    constraint check_max_balance check (balance <= account.max_balance)
-
+    max_balance decimal
 );
 
 create table email_data
