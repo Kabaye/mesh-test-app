@@ -1,5 +1,6 @@
 package com.test.repository;
 
+import com.test.entity.Account;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -18,18 +19,6 @@ public class AccountRepository {
     @Transactional
     public void updateBalanceForAllAccounts() {
         em.createNativeQuery("select * from account for update").getResultList();
-
-        List resultList = em.createNativeQuery("SELECT pid,\n"
-                                               + "datname,\n"
-                                               + "usename,\n"
-                                               + "xact_start,\n"
-                                               + "query_start,\n"
-                                               + "state,\n"
-                                               + "state_change,\n"
-                                               + "query,\n"
-                                               + "now()\n"
-                                               + "FROM pg_stat_activity").getResultList();
-        log.info("result {}", resultList);
 
         em.createNativeQuery("update account set balance = least(balance * 1.1, max_balance)")
                 .executeUpdate();
@@ -50,5 +39,9 @@ public class AccountRepository {
                 .setParameter("amount", amount)
                 .setParameter("id1", userIdFrom)
                 .executeUpdate();
+    }
+
+    public List<Account> findAll() {
+        return em.createQuery("select a from Account a", Account.class).getResultList();
     }
 }

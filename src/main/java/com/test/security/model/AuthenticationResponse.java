@@ -7,5 +7,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class AuthenticationResponse {
     private String token;
-    private String type = "Bearer";
+    private final String TYPE = "Bearer";
 }
