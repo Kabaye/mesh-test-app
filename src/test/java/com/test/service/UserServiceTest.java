@@ -103,6 +103,8 @@ class UserServiceTest {
 
             Mockito.doNothing().when(accountRepository).transferMoney(1L, 2L, BigDecimal.TEN);
 
+            userService.transferMoney("test@hotmail.com", BigDecimal.TEN);
+
             Mockito.verify(accountRepository, Mockito.times(1)).transferMoney(1L, 2L, BigDecimal.TEN);
             Mockito.verify(emailDataRepository, Mockito.times(2)).findByEmail(anyString());
         }
