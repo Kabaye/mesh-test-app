@@ -1,7 +1,6 @@
 package com.test.repository;
 
 import com.test.entity.Account;
-import com.test.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 @DataJpaTest
@@ -33,5 +33,10 @@ class AccountRepositoryTest {
 
         Assertions.assertEquals(new BigDecimal("0.0"), account1.getBalance());
         Assertions.assertEquals(new BigDecimal("300.0"), account2.getBalance());
+    }
+
+    @Test
+    void givenNotEnoughBalance_whenTransferMoney_thenFail() {
+        Assertions.assertThrows(Throwable.class, () -> accountRepository.transferMoney(1L, 2L, new BigDecimal("1000.0")));
     }
 }

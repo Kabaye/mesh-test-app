@@ -4,3 +4,7 @@ spring:
     url: jdbc:tc:postgresql:15:///posts-db
   flyway:
     locations: classpath:test/migrations
+
+jwt:
+  expiration-in-ms: 86400000
+  key: ${JWT_KEY:PT09PT09PT09PT09PT09PWtleV9leGFtcGxlX3N2X2t1bGljaF90ZXN0X2RhdGE9PT09PT09PT09PT09PT09PQ==}
